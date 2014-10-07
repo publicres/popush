@@ -86,6 +86,7 @@ app.languageMap = {
   'tex':    'stex',
   'vbs':    'vb',
   'xml':    'xml',
+  'hs':     'haskell',
 };
 
 app.modeMap = {
@@ -115,9 +116,10 @@ app.modeMap = {
   'tex':    'text/x-latex',
   'vbs':    'text/x-vb',
   'xml':    'application/xml',
+  'hs':     'text/x-haskell',
 };
 
-app.RunableExt = ['c','cpp', 'js', 'py', 'pl','rb','lua', 'java'];
+app.RunableExt = ['c','cpp', 'js', 'py', 'pl','rb','lua', 'java', 'hs'];
 app.DebugableExt = ['c', 'cpp'];
 
 app.Room = Room;

@@ -77,6 +77,15 @@ function Runner(name, type, src){
 					}}
 				];
 				break;
+			case 'hs':
+				that.class = that.name.substr(0, that.name.lastIndexOf('.'));
+				that.script = [
+					{cmd:'ghc', args:[that.name]},
+					{cmd:A, args:['1', JAVA, that.class], start:true, filter:function(data){
+						return data.replace(new RegExp(JAVA, 'gm'), 'java');
+					}}
+				];
+				break;
 		}
 	}else{
 		switch(type){
@@ -126,6 +135,13 @@ function Runner(name, type, src){
 				that.script = [
 					{cmd:'javac', args:[that.name]},
 					{cmd:'java', args:[that.class], start:true}
+				];
+				break;
+			case 'hs':
+				that.class = that.name.substr(0, that.name.lastIndexOf('.'));
+				that.script = [
+					{cmd:'ghc', args:[that.name]},
+					{cmd:'./' + that.class + '.exe', args:[], start:true}
 				];
 				break;
 		}

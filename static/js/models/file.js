@@ -33,6 +33,7 @@ var app = app || {};
     'tex': 'tex',
     'vbs': 'vbs',
     'xml': 'xml',
+    'hs': 'hs',
   };
 
   app.File = Backbone.Model.extend({
