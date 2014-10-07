@@ -20,6 +20,7 @@ var app = app || {};
             in_pw2.val('');
             var id = '#register-message',
 			str = '';
+            app.isExist = false;
             if (!/^[A-Za-z0-9]*$/.test(name)) {
                 str = 'name invalid';
             } else if (name.length < 6 || name.length > 20) {
@@ -35,6 +36,7 @@ var app = app || {};
 				loading: '#register-control',
 				error: function (data) {
 					app.showMessageBar(id, data.err, 'error');
+                                                                   app.isExist = true;
 				},
                 success: function () {
 					app.showMessageBar(id, 'registerok');
@@ -44,10 +46,14 @@ var app = app || {};
                     name: name,
                     password: pass,
                 });
-                app.socket.emit('login', {
-                    name: name,
-                    password: pass,
-                });
+                setTimeout(function(){
+                    if (app.isExist == false){
+                        app.socket.emit('login', {
+                            name: name,
+                            password: pass,
+                        });
+                    }
+                }, 500);
             }
         },
         /*快捷键回车注册*/

@@ -78,12 +78,10 @@ function Runner(name, type, src){
 				];
 				break;
 			case 'hs':
-				that.class = that.name.substr(0, that.name.lastIndexOf('.'));
+ 				that.class = that.name.substr(0, that.name.lastIndexOf('.'));
 				that.script = [
 					{cmd:'ghc', args:[that.name]},
-					{cmd:A, args:['1', JAVA, that.class], start:true, filter:function(data){
-						return data.replace(new RegExp(JAVA, 'gm'), 'java');
-					}}
+					{cmd:'./'+that.class,args:[], start:true}
 				];
 				break;
 		}
